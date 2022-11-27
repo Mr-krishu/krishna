@@ -1,0 +1,14 @@
+.card-container{
+  position: relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.card-box{
+  width: 100vh;
+  height:20vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;  
+}
