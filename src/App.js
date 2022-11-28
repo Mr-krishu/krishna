@@ -1,5 +1,5 @@
 import './App.css';
-import React,{ useState,useEffect } from 'react';
+import React,{ useState,useEffect} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography'
@@ -8,28 +8,28 @@ import axios from 'axios';
 const URL="https://randomuser.me/api"
 function App() {
 
-const [userData,setUserData]=useState({
-  fullName:"",
-  email:"",
-})
-
-const ApiService=async()=>{
-  await axios.get(URL)
-  .then((value)=>{
-    setUserData({...userData,
-      fullName:`${value.data.results[0].name.title} ${value.data.results[0].name.first} ${value.data.results[0].name.last}`,
-      email:  value.data.results[0].email,
-
-})
+  const [userData,setUserData]=useState({
+    fullName:"",
+    email:"",
   })
-};
+
+const ApiService=async() =>{
+ 
+  const response= await axios.get(URL)
+  
+    setUserData({...userData,
+      fullName:`${response.data.results[0].name.title} ${response.data.results[0].name.first} ${response.data.results[0].name.last}`,
+      email:  response.data.results[0].email,
+  })
+}
 useEffect(()=>{
   ApiService();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 },[]);
 
 
 const handleRefresh=()=>{
-ApiService();
+ApiService()
 }
 
   return (
